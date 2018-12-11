@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from subprocess import Popen, PIPE
 
+from .compat import str
 from .utils import Record
 
 
