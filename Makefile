@@ -7,6 +7,12 @@ deamon-server:
 server:
 	docker run -it --rm -p 8080:8080 $(IMAGE)
 
+wheel:
+	python setup.py bdist_wheel --universal
+
+upload:
+	twine upload dist/*
+
 test:
 	pytest --pep8 --flakes pullenti_client --nbval-lax -v docs.ipynb
 
