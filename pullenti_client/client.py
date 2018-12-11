@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 
 import requests
 
+from .compat import maybe_decode
 from .utils import Record
 from .referent import (
     Slot,
@@ -90,6 +91,7 @@ class Client(Record):
         return text.encode('utf8')
 
     def __call__(self, text):
+        text = maybe_decode(text)
         response = requests.post(
             self.endpoint,
             data=self.payload(text)
