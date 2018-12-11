@@ -6,10 +6,7 @@ from .utils import (
     Record,
     assert_type
 )
-from .referent import (
-    Slot,
-    Referent
-)
+from .referent import Referent
 from .graph import Graph
 
 

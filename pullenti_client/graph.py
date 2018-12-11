@@ -134,9 +134,9 @@ class Graph(Record):
     @property
     def source(self):
         yield 'digraph G {'
-        yield 'graph [{graph_style}];'.format(graph_style=str(self.graph_style))
-        yield 'node [{node_style}];'.format(node_style=str(self.node_style))
-        yield 'edge [{edge_style}];'.format(edge_style=str(self.edge_style))
+        yield 'graph [%s];' % self.graph_style
+        yield 'node [%s];' % self.node_style
+        yield 'edge [%s];' % self.edge_style
         for node in self.nodes:
             pattern = (
                 '{index} [{style}];'

@@ -1,0 +1,20 @@
+language: python
+python:
+  - "2.7"
+  - "3.5"
+
+services:
+  - docker
+
+addons:
+  apt:
+    packages:
+    - graphviz
+
+before_install:
+  - make deamon-server
+
+script:
+  - sleep 20
+  - sed -i 's/kernelspec//' docs.ipynb
+  - make test
