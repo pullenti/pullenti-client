@@ -1,7 +1,7 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from .compat import str
+from .compat import string_type
 from .utils import (
     Record,
     assert_type
@@ -43,7 +43,7 @@ class Result(Record):
     __attributes__ = ['text', 'matches']
 
     def __init__(self, text, matches):
-        assert_type(text, str)
+        assert_type(text, string_type)
         self.text = text
         for match in matches:
             assert_type(match, Match)

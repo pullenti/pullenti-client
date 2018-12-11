@@ -1,7 +1,7 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from .compat import str
+from .compat import string_type
 from .utils import (
     assert_type,
     Record
@@ -18,9 +18,9 @@ class Slot(Record):
     __attributes__ = ['key', 'value']
 
     def __init__(self, key, value):
-        assert_type(key, str)
+        assert_type(key, string_type)
         self.key = key
-        assert_type(value, (str, Referent))
+        assert_type(value, (string_type, Referent))
         self.value = value
 
 

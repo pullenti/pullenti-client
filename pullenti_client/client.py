@@ -19,7 +19,7 @@ from .result import (
 
 
 def parse_xml(data):
-    return ET.fromstring(maybe_decode(data))
+    return ET.fromstring(data)
 
 
 def parse_response(text, xml):
