@@ -38,6 +38,10 @@ def parse_response(text, xml):
             key = item.get('key')
             referent = item.get('referent')
             if referent:
+                if referent not in id_refents:
+                    # should not happen but
+                    # https://github.com/pullenti/PullentiServer/issues/1
+                    continue
                 value = id_refents[referent]
             else:
                 value = item.get('value')
