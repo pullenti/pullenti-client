@@ -59,8 +59,8 @@ $ pip install pullenti-client
 
 ## Документация
 
-- Документация для клиенты — http://nbviewer.jupyter.org/github/pullenti/pullenti-client/blob/master/docs.ipynb
-- README для сервера — https://github.com/pullenti/PullentiServer/blob/master/README.md
+- Документация для клиента — http://nbviewer.jupyter.org/github/pullenti/pullenti-client/blob/master/docs.ipynb
+- Для сервера — https://github.com/pullenti/PullentiServer/blob/master/README.md
 - Документация для PullEnti — http://pullenti.ru/DownloadPage.aspx. На сайте PullEnti также есть демо-стенд http://pullenti.ru/DemoPage.aspx
 
 ## Лицензия
