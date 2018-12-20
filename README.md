@@ -51,7 +51,7 @@ display(result)
 
 ## Установка
 
-`pullenti-client` поддерживает Python 3.4+, 2.7+ и PyPy 2, 3.
+pullenti-client поддерживает Python 3.4+, 2.7+ и PyPy 2, 3.
 
 ```bash
 $ pip install pullenti-client
@@ -65,12 +65,12 @@ $ pip install pullenti-client
 
 ## Лицензия
 
-Для `pullenti-client` — MIT, для PullEnti — Free for non-commercial use, подробности на http://pullenti.ru/
+Для pullenti-client — MIT, для PullEnti — Free for non-commercial use, подробности на http://pullenti.ru/
 
 ## Поддержка
 
 Для обёртки:
 - Чат — https://telegram.me/natural_language_processing
-- Тикеты — https://github.com/natasha/pullenti-wrapper/issues
+- Тикеты — https://github.com/pullenti/pullenti-client/issues
 
 Для PullEnti — http://www.pullenti.ru/Default.aspx
