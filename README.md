@@ -1,10 +1,10 @@
 # pullenti-client [![Build Status](https://travis-ci.org/pullenti/pullenti-client.svg?branch=master)](https://travis-ci.org/pullenti/pullenti-client)
 
-Клиент для [PullentiServer](https://github.com/pullenti/PullentiServer). Предоставляет удобное Python API для результатов работы сервера. API такое же, как в [pullenti-wrapper](https://github.com/pullenti/pullenti-wrapper). Пользователь получает удобный интерфейс `pullenti-wrapper` и производительность PullEnti для C#.
+Клиент для [PullentiServer](https://github.com/pullenti/PullentiServer). Предоставляет удобное Python API для результатов работы сервера. API такое же, как в [pullenti-wrapper](https://github.com/pullenti/pullenti-wrapper). Пользователь получает удобный интерфейс pullenti-wrapper и производительность PullEnti для C#.
 
 ## Использование
 
-Предполагается, что на порту 8080 работает `PullentiServer`. Пример команды для запуска:
+Предполагается, что на порту 8080 работает PullentiServer. Пример команды для запуска:
 
 ```bash
 docker run -it --rm -p 8080:8080 pullenti/pullenti-server
@@ -45,6 +45,9 @@ display(result)
 ---------                                                 
 
 ```
+<img src="graph.png"/>
+
+Подробнее в [документации](http://nbviewer.jupyter.org/github/pullenti/pullenti-client/blob/master/docs.ipynb).
 
 ## Установка
 
