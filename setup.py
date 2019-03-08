@@ -7,7 +7,7 @@ from setuptools import (
 
 setup(
     name='pullenti_client',
-    version='0.1.0',
+    version='0.2.0',
     description='Client for PullentiServer',
     url='https://github.com/pullenti/pullenti-client',
     author='Alexander Kukushkin',
