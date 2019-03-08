@@ -24,6 +24,18 @@ class Slot(Record):
         self.value = value
 
 
+def bfs(root):
+    queue = [root]
+    visited = set()
+    while queue:
+        item = queue.pop(0)
+        yield item
+        visited.add(id(item))
+        for child in item.children:
+            if id(child) not in visited:
+                queue.append(child)
+
+
 class Referent(Record):
     __attributes__ = ['label', 'slots']
 
@@ -33,12 +45,14 @@ class Referent(Record):
             assert_type(slot, Slot)
         self.slots = slots
 
-    def walk(self):
-        yield self
+    @property
+    def children(self):
         for slot in self.slots:
             if isinstance(slot.value, Referent):
-                for item in slot.value.walk():
-                    yield item
+                yield slot.value
+
+    def walk(self):
+        return bfs(self)
 
     @property
     def graph(self):
