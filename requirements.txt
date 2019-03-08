@@ -2,7 +2,7 @@
 requests
 
 # dev
-ipymarkup=0.4.0
+ipymarkup==0.4.0
 pytest==3.2.1
 pytest-pep8==1.0.6
 pytest-flakes==4.0.0
