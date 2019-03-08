@@ -22,6 +22,9 @@ def parse_xml(data):
     return ET.fromstring(data)
 
 
+MISSING = Referent('MISSING')
+
+
 def parse_response(text, xml):
     id_refents = {}
     for item in xml:
@@ -41,8 +44,9 @@ def parse_response(text, xml):
                 if referent not in id_refents:
                     # should not happen but
                     # https://github.com/pullenti/PullentiServer/issues/1
-                    continue
-                value = id_refents[referent]
+                    value = MISSING
+                else:
+                    value = id_refents[referent]
             else:
                 value = item.get('value')
             slot = Slot(key, value)
@@ -50,7 +54,11 @@ def parse_response(text, xml):
         elif tag == 'match':
             id = item.get('id')
             referent = item.get('referent')
-            referent = id_refents[referent]
+            if referent not in id_refents:
+                # also should not happen
+                referent = MISSING
+            else:
+                referent = id_refents[referent]
             start = int(item.get('start'))
             stop = int(item.get('stop'))
             span = Span(start, stop)
