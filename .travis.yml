@@ -12,7 +12,7 @@ addons:
     - graphviz
 
 before_install:
-  - make deamon-server
+  - make up
 
 script:
   - sleep 20
