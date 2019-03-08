@@ -48,7 +48,7 @@ class Referent(Record):
     @property
     def children(self):
         for slot in self.slots:
-            if isinstance(slot.value, Referent):
+            if is_referent(slot.value):
                 yield slot.value
 
     def walk(self):
@@ -71,7 +71,7 @@ class Referent(Record):
                         fillcolor=BLUE
                     )
                 )
-                if isinstance(target, Referent):
+                if is_referent(target):
                     color = BLUE
                     label = target.label
                 else:
@@ -85,3 +85,7 @@ class Referent(Record):
                     )
                 )
         return graph
+
+
+def is_referent(item):
+    return isinstance(item, Referent)

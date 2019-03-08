@@ -1,11 +1,17 @@
 
-IMAGE = pullenti/pullenti-server
+IMAGE = pullenti/pullenti-server:3.17
 
-deamon-server:
-	docker run -d -p 8080:8080 $(IMAGE)
+up:
+	docker run --name pullenti -d -p 8080:8080 $(IMAGE)
 
-server:
-	docker run -it --rm -p 8080:8080 $(IMAGE)
+down:
+	docker rm -f pullenti
+
+tag:
+	git tag `python version.py get setup.py`
+
+version:
+	python version.py inc setup.py
 
 wheel:
 	python setup.py bdist_wheel --universal

@@ -74,3 +74,29 @@ $ pip install pullenti-client
 - Тикеты — https://github.com/pullenti/pullenti-client/issues
 
 Для PullEnti — http://www.pullenti.ru/Default.aspx
+
+## Разработка
+
+Обновить версию IMAGE в Makefile
+
+Тесты:
+
+```bash
+make up
+make test
+make down
+```
+
+Пакет:
+
+```bash
+make version
+git add ...
+git commit -m 'Up version'
+
+make tag
+git push
+git push --tags
+
+make clean wheel upload
+```

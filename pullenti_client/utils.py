@@ -1,8 +1,6 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from collections import OrderedDict
-
 
 def assert_type(item, types):
     if not isinstance(item, types):
@@ -12,18 +10,6 @@ def assert_type(item, types):
             types=' or '.join(_.__name__ for _ in types),
             type=type(item).__name__
         ))
-
-
-def jsonify(record):
-    data = OrderedDict()
-    for key in record.__attributes__:
-        value = getattr(record, key)
-        if isinstance(value, list):
-            value = [jsonify(_) for _ in value]
-        elif isinstance(value, Record):
-            value = value.as_json
-        data[key] = value
-    return data
 
 
 class Record(object):
@@ -46,10 +32,6 @@ class Record(object):
 
     def __hash__(self):
         return hash(tuple(self))
-
-    @property
-    def as_json(self):
-        return jsonify(self)
 
     def __repr__(self):
         name = self.__class__.__name__
@@ -85,3 +67,16 @@ class Record(object):
                             printer.break_()
                 printer.break_()
             printer.text(')')
+
+
+class Ids:
+    def __init__(self):
+        self.cache = {}
+
+    def assign(self, item):
+        if item is None:
+            return
+        item_id = id(item)
+        if item_id not in self.cache:
+            self.cache[item_id] = len(self.cache)
+        return self.cache[item_id]

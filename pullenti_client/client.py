@@ -7,73 +7,17 @@ import requests
 
 from .compat import maybe_decode
 from .utils import Record
-from .referent import (
-    Slot,
-    Referent
-)
-from .result import (
-    Span,
-    Match,
-    Result
-)
+from .flat import FlatResult
+from .result import Result
 
 
 def parse_xml(data):
     return ET.fromstring(data)
 
 
-MISSING = Referent('MISSING')
-
-
 def parse_response(text, xml):
-    id_refents = {}
-    for item in xml:
-        if item.tag == 'referent':
-            id = item.get('id')
-            label = item.get('type')
-            id_refents[id] = Referent(label, slots=[])
-    id_matches = {}
-    matches = []
-    for item in xml:
-        tag = item.tag
-        if tag == 'slot':
-            parent = item.get('parent')
-            key = item.get('key')
-            referent = item.get('referent')
-            if referent:
-                if referent not in id_refents:
-                    # should not happen but
-                    # https://github.com/pullenti/PullentiServer/issues/1
-                    value = MISSING
-                else:
-                    value = id_refents[referent]
-            else:
-                value = item.get('value')
-            slot = Slot(key, value)
-            id_refents[parent].slots.append(slot)
-        elif tag == 'match':
-            id = item.get('id')
-            referent = item.get('referent')
-            if referent not in id_refents:
-                # also should not happen
-                referent = MISSING
-            else:
-                referent = id_refents[referent]
-            start = int(item.get('start'))
-            stop = int(item.get('stop'))
-            span = Span(start, stop)
-            match = Match(referent, span, children=[])
-            id_matches[id] = match
-            parent = item.get('parent')
-            if parent:
-                id_matches[parent].children.append(match)
-            else:
-                matches.append(match)
-    matches = sorted(
-        matches,
-        key=lambda _: _.span.start
-    )
-    return Result(text, matches)
+    result = FlatResult.from_xml(text, xml)
+    return Result.from_flat(result)
 
 
 class ClientError(Exception):

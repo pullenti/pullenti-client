@@ -4,7 +4,10 @@ from __future__ import unicode_literals
 from subprocess import Popen, PIPE
 
 from .compat import str
-from .utils import Record
+from .utils import (
+    Record,
+    Ids
+)
 
 
 BLUE = '#aec7e8'
@@ -126,14 +129,9 @@ class Graph(Record):
         for source, target, style in graph.edges:
             self.add_edge(source, target, style)
 
-    def id(self, item):
-        item_id = id(item)
-        if item_id not in self.ids:
-            self.ids[item_id] = len(self.ids)
-        return self.ids[item_id]
-
     @property
     def source(self):
+        id = Ids().assign
         yield 'digraph G {'
         yield 'graph [%s];' % self.graph_style
         yield 'node [%s];' % self.node_style
@@ -145,7 +143,7 @@ class Graph(Record):
                 else '{index}'
             )
             yield pattern.format(
-                index=self.id(node.item),
+                index=id(node.item),
                 style=str(node.style)
             )
         for edge in self.edges:
@@ -155,8 +153,8 @@ class Graph(Record):
                 else '{source} -> {target};'
             )
             yield pattern.format(
-                source=self.id(edge.source),
-                target=self.id(edge.target),
+                source=id(edge.source),
+                target=id(edge.target),
                 style=str(edge.style)
             )
         yield '}'
