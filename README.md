@@ -83,6 +83,7 @@ $ pip install pullenti-client
 
 ```bash
 make up
+# wait 5 sec
 make test
 make down
 ```
@@ -91,10 +92,6 @@ make down
 
 ```bash
 make version
-git add ...
-git commit -m 'Up version'
-
-make tag
 git push
 git push --tags
 

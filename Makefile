@@ -1,5 +1,5 @@
 
-IMAGE = pullenti/pullenti-server:3.17
+IMAGE = pullenti/pullenti-server:3.19
 
 up:
 	docker run --name pullenti -d -p 8080:8080 $(IMAGE)
@@ -7,14 +7,11 @@ up:
 down:
 	docker rm -f pullenti
 
-tag:
-	git tag `python version.py get setup.py`
-
 version:
-	python version.py inc setup.py
+	bumpversion minor
 
 wheel:
-	python setup.py bdist_wheel --universal
+	python setup.py bdist_wheel
 
 upload:
 	twine upload dist/*
