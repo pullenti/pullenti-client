@@ -5,6 +5,10 @@ from setuptools import (
 )
 
 
+with open('requirements/main.txt') as file:
+    requirements = file.read().splitlines()
+
+
 setup(
     name='pullenti_client',
     version='0.3.0',
@@ -30,7 +34,5 @@ setup(
     ],
     keywords='natural language processing, named entity recognition',
     packages=find_packages(),
-    install_requires=[
-        'requests'
-    ]
+    install_requires=requirements
 )
