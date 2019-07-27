@@ -16,5 +16,4 @@ before_install:
 
 script:
   - sleep 20
-  - sed -i 's/kernelspec//' docs.ipynb
   - make test
