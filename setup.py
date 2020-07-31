@@ -11,7 +11,7 @@ with open('requirements/main.txt') as file:
 
 setup(
     name='pullenti_client',
-    version='0.5.0',
+    version='0.6.0',
     description='Client for PullentiServer',
     url='https://github.com/pullenti/pullenti-client',
     author='Alexander Kukushkin',
