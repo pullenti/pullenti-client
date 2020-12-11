@@ -1,5 +1,5 @@
 
-IMAGE = pullenti/pullenti-server:3.23
+IMAGE = pullenti/pullenti-server:4.1
 
 up:
 	docker run --name pullenti -d -p 8080:8080 $(IMAGE)
